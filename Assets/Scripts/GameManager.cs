@@ -1,31 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
+
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private UnityEvent StarPickedUp;
-    ScoreManager sm;
     public TMP_Text score;
+    public PlayerController playerController;
 
     private void Start()
     {
         ResetTheScore();
-        ResetPlayerPosition();
-    }
-
-
-    // When level is reset, reset player position to the start
-    void ResetPlayerPosition()
-    {
-       
     }
 
     // Reset the score    
     void ResetTheScore()
     {
         score.SetText("0");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }
