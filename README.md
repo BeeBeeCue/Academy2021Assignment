@@ -17,21 +17,6 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-     </li>
-    <li>
-      <a href="#game-comments">Game Comments</a>
-    
-    </li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -43,6 +28,28 @@
 </p>
 
 ## Game Comments
+What I decided to do:
+I tried to mimic the game as closely as possible. I got the core mechanics down I belive. The bounce feels quite smooth.
+I took the AudioManager from Brackeys, it is simple but I added a slight variation in pitch, I think it is pretty cool.
+The traps were pretty basic, I only mande 2x, but they are just 4 objects within a parent. Each uses a polygon collider and is a trigger for the player.
+The player uses OntriggerEnter2D and checks for tags. I thought Tag comparison would be the easiest way to implement this game.
+
+
+What I would like to add:
+More traps.
+ - Triangles (create logic that it uses only 3 colors and checks that it has the player color)
+ - Color changing lines (create a Corutine and make a timer, 1-1.5sec, and it will rotate through the colors)
+ - Powerups, one might be that the ball splits in two, on the left and right so you have to bounce it with both hands. I would split the screen in half for the tap areas or use different keys on the keyboard. It would need different traps
+ - You go up, fetch a key at the top, then you have to go down through the traps again, so you have to learn the gravity too
+ - Different gravity zones. Either mess with the player Impulse force, the linear drag or the gravity scale.
+
+
+
+The thing I did not have time to do was:
+ - Restricting the camera to only upward motion and kill the player when he goes down out of sight. I am using Cinemachine. I would just clamp the Y value and compare the current position to the old postion, if it is smaller than don't move the camera. Then I could use the built in camera collider to kill the player.
+ - ScoreManager. I wanted to make as much as I could decoupled. I wanted to have a public gameManager that would either use delegate or Events to the scoreManager. But I just put it in the PlayerController for now. It works, but could be better.
+
+
 
 
 <!-- CONTACT -->
