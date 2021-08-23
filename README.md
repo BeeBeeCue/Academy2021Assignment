@@ -29,10 +29,10 @@
 
 ## Game Comments
 What I decided to do:
-I tried to mimic the game as closely as possible. I got the core mechanics down I belive. The bounce feels quite smooth.
-I took the AudioManager from Brackeys, it is simple but I added a slight variation in pitch, I think it is pretty cool.
-The traps were pretty basic, I only mande 2x, but they are just 4 objects within a parent. Each uses a polygon collider and is a trigger for the player.
-The player uses OntriggerEnter2D and checks for tags. I thought Tag comparison would be the easiest way to implement this game.
+- I tried to mimic the game as closely as possible. I got the core mechanics down I belive. The bounce feels quite smooth.
+- I took the AudioManager from Brackeys, it is simple but I added a slight variation in pitch, I think it is pretty cool.
+- The traps were pretty basic, I only mande 2x, but they are just 4 objects within a parent. Each uses a polygon collider and is a trigger for the player.
+- The player uses OntriggerEnter2D and checks for tags. I thought Tag comparison would be the easiest way to implement this game.
 
 
 What I would like to add:
