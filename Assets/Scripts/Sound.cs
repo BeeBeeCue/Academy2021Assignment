@@ -2,6 +2,7 @@
 using UnityEngine;
 
 [System.Serializable]
+// Script from Brakeys
 public class Sound {
 
 	public string name;

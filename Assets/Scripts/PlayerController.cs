@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
-using UnityEngine.SceneManagement;
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,47 +17,27 @@ public class PlayerController : MonoBehaviour
     int playerColorNumber;
 
     bool gameOver = false;
-
+    
     Rigidbody2D rb;
-    Dictionary<int, string> colorChooserDictionary;
 
     //
     // AWAKE
     //
     private void Awake()
-    {
+    {     
         InitializeVariables();
     }
-
 
     //
     // START
     //
     void Start()
     {
-        playerColorNumber = 0;
-        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        gameObject.tag = "RED";
-
-
-
-        /*
-        colorChooserDictionary.Add(0, "RED");
-        colorChooserDictionary.Add(1, "BLUE");
-        colorChooserDictionary.Add(2, "GREEN");
-        colorChooserDictionary.Add(3, "PURPLE");
-        foreach (var item in colorChooserDictionary)
-        {
-            Debug.Log(item);
-
-        }
-        */
-
-        gameOver = false;
-
         
-
-
+        playerColorNumber = 0;
+        gameObject.GetComponent<SpriteRenderer>().color = gameManager.RED;
+        gameObject.tag = "RED";
+        gameOver = false;
     }
 
     //
@@ -69,6 +45,7 @@ public class PlayerController : MonoBehaviour
     //
     void Update()
     {
+        // Mouseclick, add force and play sound
         if (Input.GetMouseButtonDown(0))
         {
             rb.AddForce(transform.up * upwardForce, ForceMode2D.Impulse);
@@ -83,11 +60,9 @@ public class PlayerController : MonoBehaviour
     void InitializeVariables()
     {
         rb = GetComponent<Rigidbody2D>();
-        colorChooserDictionary = new Dictionary<int, string>();
-
-
     }
 
+    // Randomly pick color, if it is the same, pick again
     void PickPlayerColor()
     {
         colorNumber = UnityEngine.Random.Range(0, 4);
@@ -102,33 +77,31 @@ public class PlayerController : MonoBehaviour
             {
                 case 0:
                     gameObject.tag = "RED";
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                    gameObject.GetComponent<SpriteRenderer>().color = gameManager.RED;
                     playerColorNumber = colorNumber;
                     break;
                 case 1:
                     gameObject.tag = "BLUE";
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                    gameObject.GetComponent<SpriteRenderer>().color = gameManager.BLUE;
                     playerColorNumber = colorNumber;
                     break;
                 case 2:
                     gameObject.tag = "GREEN";
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                    gameObject.GetComponent<SpriteRenderer>().color = gameManager.GREEN;
                     playerColorNumber = colorNumber;
                     break;
                 case 3:
                     gameObject.tag = "PURPLE";
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                    gameObject.GetComponent<SpriteRenderer>().color = gameManager.PURPLE;
                     playerColorNumber = colorNumber;
                     break;
                 default:
                     gameObject.tag = "RED";
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                    gameObject.GetComponent<SpriteRenderer>().color = gameManager.RED;
                     playerColorNumber = colorNumber;
                     break;
             }
-            Debug.Log("Keep this color");
         }
-        
     }
 
     //---------------------------------------------------
@@ -140,7 +113,7 @@ public class PlayerController : MonoBehaviour
         // Same color as the player, nothing happens
         if (gameObject.tag == collision.gameObject.tag)
         {
-            Debug.Log("Same Same tag");
+            Debug.Log("Nice");
         }
         // Star Pickup
         else if (collision.tag == "STAR")
@@ -169,10 +142,7 @@ public class PlayerController : MonoBehaviour
             GameObject particleObject = Instantiate(playerDeathParticle.gameObject);
             particleObject.transform.position = gameObject.transform.position;
             FindObjectOfType<AudioManager>().Play("Death");
-
             OnPlayerDeath?.Invoke();
-
-
             Destroy(gameObject);
             gameOver = true;
             Debug.Log(gameOver + "death");

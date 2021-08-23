@@ -8,9 +8,12 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private UnityEvent StarPickedUp;
     public TMP_Text score;
-    public PlayerController playerController;
+
+    public Color RED = new Color(1f, 0f, 0f);
+    public Color GREEN = new Color(0f, 1f, 0f);
+    public Color BLUE = new Color(0f, 0f, 1f);
+    public Color PURPLE = new Color(1f, 0f, 1f);
 
     private void Start()
     {
@@ -26,6 +29,5 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 }
