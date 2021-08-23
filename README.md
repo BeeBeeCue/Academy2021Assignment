@@ -28,7 +28,7 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#game-comments">Game Comments</a>
       <ul>
         <li><a href="#installation">Installation</a></li>
       </ul>
@@ -49,20 +49,13 @@
 
 </p>
 
-
-
-
-
-
+## Game Comments
 
 
 <!-- CONTACT -->
 ## Contact
 
 Kristófer Knutsen - kristoferknutsen@hotmail.com
-
-Project Link: [https://github.com/BeeBeeCue/MapViz](https://github.com/BeeBeeCue/MapViz)
-
 
 
 <!-- ACKNOWLEDGEMENTS -->
